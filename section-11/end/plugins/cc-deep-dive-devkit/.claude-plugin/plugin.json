@@ -1,0 +1,10 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "cc-deep-dive-devkit",
+  "version": "0.1.0",
+  "description": "Dev kit for the expense tracker: an http-samples skill that generates REST-client files from your endpoints, plus a hook that logs every Bash command Claude runs.",
+  "author": {
+    "name": "Gui Ferreira",
+    "email": "gui@guiferreira.me"
+  }
+}

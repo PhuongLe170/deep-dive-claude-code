@@ -1,0 +1,10 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "thinking-tools",
+  "version": "0.1.0",
+  "description": "Project-agnostic thinking tools. Ships shape-idea, a skill that interviews you about a rough idea and writes it up as a spec.",
+  "author": {
+    "name": "Gui Ferreira",
+    "email": "gui@guiferreira.me"
+  }
+}

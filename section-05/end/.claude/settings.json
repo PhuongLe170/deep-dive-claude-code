@@ -1,0 +1,102 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./app/api/**/appsettings*.json)",
+      "Edit(./app/api/**/appsettings*.json)",
+      "Read(./**/.env)",
+      "Read(./**/.env.*)",
+      "Edit(./**/.env)",
+      "Edit(./**/.env.*)",
+      "Edit(./app/api/Api/Migrations/**)"
+    ],
+    "ask": [
+      "Bash(git push)",
+      "Bash(git push:*)",
+      "Bash(git reset --*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash",
+            "args": [
+              "${CLAUDE_PROJECT_DIR}/.claude/hooks/block-destructive-git.sh"
+            ]
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "permission_prompt|idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash",
+            "args": [
+              "${CLAUDE_PROJECT_DIR}/.claude/hooks/notify.sh"
+            ]
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash",
+            "args": [
+              "${CLAUDE_PROJECT_DIR}/.claude/hooks/log-command.sh"
+            ]
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash",
+            "args": [
+              "${CLAUDE_PROJECT_DIR}/.claude/hooks/format-code.sh"
+            ]
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash",
+            "args": [
+              "${CLAUDE_PROJECT_DIR}/.claude/hooks/auto-stage.sh"
+            ]
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dotnet test 1>&2 || exit 2",
+            "timeout": 300
+          },
+          {
+            "type": "prompt",
+            "model": "claude-haiku-4-5",
+            "prompt": "You are a coverage gate. This turn's JSON is in $ARGUMENTS. The command gate already confirmed the suite is green, so your only job is to check whether new or changed behavior was left untested. Read the transcript for edits to API endpoint, feature, or handler code under app/api/Api/Features (new endpoints, new fields, new branches, changed validation or business logic). If any such behavior was added or changed, verify the same turn also added or updated tests in app/tests/Api.Tests that exercise it. Block only when production behavior changed and no corresponding test change accompanies it. Do not block for: pure refactors with no behavior change, comments or formatting, config, migrations, docs, web-only changes, or turns that touched no feature code. When you block, name the specific untested behavior and the test file that should cover it. Respond with a JSON object: {\"decision\": \"block\", \"reason\": \"...\"} to require tests, or {\"decision\": \"approve\"} to allow the stop."
+          }
+        ]
+      }
+    ]
+  }
+}

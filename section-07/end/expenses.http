@@ -1,0 +1,22 @@
+@baseUrl = http://localhost:5033
+@expenseId = 00000000-0000-0000-0000-000000000000
+
+### POST /api/expenses
+POST {{baseUrl}}/api/expenses
+Content-Type: application/json
+
+{
+  "amount": 42.50,
+  "currency": "EUR",
+  "description": "Team lunch",
+  "date": "2026-07-20"
+}
+
+### GET /api/expenses
+GET {{baseUrl}}/api/expenses
+
+### DELETE /api/expenses/{id}
+DELETE {{baseUrl}}/api/expenses/{{expenseId}}
+
+### GET /api/expenses/totals/monthly
+GET {{baseUrl}}/api/expenses/totals/monthly

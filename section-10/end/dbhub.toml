@@ -1,0 +1,12 @@
+[[sources]]
+id = "dev"
+dsn = "${DATABASE_URL}"
+
+[[tools]]
+name = "execute_sql"
+source = "dev"
+readonly = true
+
+[[tools]]
+name = "search_objects"
+source = "dev"

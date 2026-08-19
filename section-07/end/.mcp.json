@@ -1,0 +1,51 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "env": {}
+    },
+    "dbhub": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "--package=@bytebase/dbhub@1.0.0",
+        "--package=pg@8",
+        "--",
+        "dbhub",
+        "--transport",
+        "stdio",
+        "--config",
+        "./dbhub.toml"
+      ],
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL:-postgres://expense:expense@localhost:5432/expenses}"
+      }
+    },
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp",
+      "alwaysLoad": true
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_PAT}"
+      }
+    },
+    "claude-code": {
+      "type": "stdio",
+      "command": "claude",
+      "args": [
+        "mcp",
+        "serve"
+      ],
+      "env": {}
+    }
+  }
+}

@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: expense-tracker-db
+    environment:
+      POSTGRES_USER: expense
+      POSTGRES_PASSWORD: expense
+      POSTGRES_DB: expenses
+    ports:
+      - "5432:5432"
+    volumes:
+      - expense-tracker-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U expense -d expenses"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  expense-tracker-data:

@@ -1,0 +1,87 @@
+@baseUrl = http://localhost:5033
+@expenseId = 00000000-0000-0000-0000-000000000000
+@subscriptionId = 00000000-0000-0000-0000-000000000000
+@companyId = 00000000-0000-0000-0000-000000000000
+
+### POST /api/expenses
+POST {{baseUrl}}/api/expenses
+Content-Type: application/json
+
+{
+  "amount": 42.50,
+  "currency": "EUR",
+  "description": "Team lunch",
+  "date": "2026-07-20"
+}
+
+### GET /api/expenses
+GET {{baseUrl}}/api/expenses
+
+### PUT /api/expenses/{id}
+PUT {{baseUrl}}/api/expenses/{{expenseId}}
+Content-Type: application/json
+
+{
+  "amount": 51.00,
+  "currency": "EUR",
+  "description": "Team lunch (corrected)",
+  "date": "2026-07-20",
+  "note": "Split with the design team"
+}
+
+### DELETE /api/expenses/{id}
+DELETE {{baseUrl}}/api/expenses/{{expenseId}}
+
+### GET /api/expenses/totals/monthly
+GET {{baseUrl}}/api/expenses/totals/monthly
+
+### GET /api/expenses/totals/monthly (single month)
+GET {{baseUrl}}/api/expenses/totals/monthly?year=2026&month=7
+
+### GET /api/expenses/budgets
+GET {{baseUrl}}/api/expenses/budgets
+
+### PUT /api/expenses/budgets
+PUT {{baseUrl}}/api/expenses/budgets
+Content-Type: application/json
+
+{
+  "currency": "EUR",
+  "amount": 1500.00
+}
+
+### GET /api/expenses/budgets/comparison
+GET {{baseUrl}}/api/expenses/budgets/comparison
+
+### POST /api/subscriptions
+POST {{baseUrl}}/api/subscriptions
+Content-Type: application/json
+
+{
+  "vendor": "Figma",
+  "amount": 21.00,
+  "currency": "EUR",
+  "billingCycle": "Monthly",
+  "renewalDate": "2026-08-01"
+}
+
+### GET /api/subscriptions
+GET {{baseUrl}}/api/subscriptions
+
+### DELETE /api/subscriptions/{id}
+DELETE {{baseUrl}}/api/subscriptions/{{subscriptionId}}
+
+### POST /api/companies
+POST {{baseUrl}}/api/companies
+Content-Type: application/json
+
+{
+  "name": "Dometrain",
+  "website": "https://dometrain.com"
+}
+
+### GET /api/companies
+GET {{baseUrl}}/api/companies
+
+### DELETE /api/companies/{id}
+DELETE {{baseUrl}}/api/companies/{{companyId}}

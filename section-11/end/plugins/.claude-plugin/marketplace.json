@@ -1,0 +1,45 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "cc-deep-dive",
+  "description": "Marketplace for the plugins built in the Claude Code Deep Dive course",
+  "owner": {
+    "name": "Gui Ferreira",
+    "email": "gui@guiferreira.me",
+    "url": "https://guiferreira.me"
+  },
+  "metadata": {
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "cc-deep-dive-devkit",
+      "source": "./cc-deep-dive-devkit",
+      "description": "Dev kit for the expense tracker: an http-samples skill that generates REST-client files from your endpoints, plus a hook that logs every Bash command Claude runs.",
+      "author": {
+        "name": "Gui Ferreira",
+        "email": "gui@guiferreira.me"
+      },
+      "category": "development",
+      "tags": [
+        "http",
+        "rest-client",
+        "audit-log"
+      ]
+    },
+    {
+      "name": "thinking-tools",
+      "source": "./thinking-tools",
+      "description": "Project-agnostic thinking tools. Ships shape-idea, a skill that interviews you about a rough idea and writes it up as a spec.",
+      "author": {
+        "name": "Gui Ferreira",
+        "email": "gui@guiferreira.me"
+      },
+      "category": "productivity",
+      "tags": [
+        "spec",
+        "interview",
+        "planning"
+      ]
+    }
+  ]
+}

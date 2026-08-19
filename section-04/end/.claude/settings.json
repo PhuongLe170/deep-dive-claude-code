@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./app/api/**/appsettings*.json)",
+      "Edit(./app/api/**/appsettings*.json)",
+      "Read(./**/.env)",
+      "Read(./**/.env.*)",
+      "Edit(./**/.env)",
+      "Edit(./**/.env.*)",
+      "Edit(./app/api/Api/Migrations/**)"
+    ],
+    "ask": [
+      "Bash(git push)",
+      "Bash(git push:*)",
+      "Bash(git reset --*)"
+    ]
+  }
+}

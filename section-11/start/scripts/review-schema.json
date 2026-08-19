@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "findings": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "severity": {
+                        "type": "string",
+                        "enum": [
+                            "important",
+                            "nit"
+                        ]
+                    },
+                    "file": {
+                        "type": "string"
+                    },
+                    "line": {
+                        "type": "integer"
+                    },
+                    "issue": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "severity",
+                    "file",
+                    "issue"
+                ],
+                "additionalProperties": false
+            }
+        }
+    },
+    "required": [
+        "findings"
+    ],
+    "additionalProperties": false
+}
