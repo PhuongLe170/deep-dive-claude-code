@@ -45,8 +45,10 @@ public class Subscription
         {
             return true;
         }
-
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
 
