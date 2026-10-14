@@ -1,6 +1,3 @@
-using System.Text;
-
-
 namespace ExpenseTracker.Api.Features.Subscriptions;
 
 // Intended shape for the Subscriptions solo track. This is deliberately NOT wired into
@@ -28,6 +25,4 @@ public class Subscription
     public BillingCycle BillingCycle { get; set; }
 
     public DateOnly RenewalDate { get; set; }
-
-
 }
