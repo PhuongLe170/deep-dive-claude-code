@@ -27,4 +27,6 @@ public class Subscription
     public BillingCycle BillingCycle { get; set; }
 
     public DateOnly RenewalDate { get; set; }
+
+
 }
