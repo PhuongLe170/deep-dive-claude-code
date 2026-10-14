@@ -26,31 +26,4 @@ public class Subscription
 
     public DateOnly RenewalDate { get; set; }
 
-
-    public decimal MonthlyCost()
-    {
-        if (BillingCycle == BillingCycle.Annual)
-        {
-            return Amount / 12;
-        }
-
-        return Amount;
-    }
-
-    public bool IsDueWithin(int days)
-    {
-        var today = DateOnly.FromDateTime(DateTime.UtcNow);
-        int daysLeft = RenewalDate.DayNumber - today.DayNumber;
-        if (daysLeft >= 0 && daysLeft <= days)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-
-    public string Label() => Vendor + " (" + Currency + ")";
 }
